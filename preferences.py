@@ -4,7 +4,6 @@ import google.generativeai as genai
 from pymongo import MongoClient
 
 # Load environment variables from .env file
-load_dotenv()
 
 # MongoDB connection setup
 client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
