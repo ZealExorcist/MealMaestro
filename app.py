@@ -5,7 +5,7 @@ from pymongo import MongoClient
 
 load_dotenv()
 # MongoDB connection setup
-client = MongoClient(st.secrets("MONGO_CLIENT"))  # replace with your MongoDB connection string
+client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
 db = client["auth_app"]  # Create a database called auth_app
 users_collection = db["users"]  # Create a collection called users
 
@@ -67,7 +67,7 @@ c = st.sidebar.container()
 query = c.text_input("Enter food item")
 if c.button("Search"):
     api_url = 'https://api.calorieninjas.com/v1/nutrition?query='
-    response = requests.get(api_url + query, headers={'X-Api-Key': os.getenv("NINJA_API_KEY")})
+    response = requests.get(api_url + query, headers={'X-Api-Key': st.secrets["NINJA_API_KEY"]})
     if response.status_code == requests.codes.ok:
         output = response.json()
         st.session_state.calorie += float(output['items'][0]['calories'])
