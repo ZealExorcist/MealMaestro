@@ -2,11 +2,10 @@ import streamlit as st
 from pymongo import MongoClient
 import bcrypt
 import os
-from dotenv import load_dotenv
 
 load_dotenv()
 
-client = MongoClient(os.getenv("MONGO_CLIENT"))  # replace with your MongoDB connection string
+client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
 db = client["auth_app"]  # Create a database called auth_app
 users_collection = db["users"]  # Create a collection called users
 
