@@ -1,19 +1,18 @@
 import streamlit as st
 import os
 import google.generativeai as genai
-from dotenv import load_dotenv
 from pymongo import MongoClient
 
 # Load environment variables from .env file
 load_dotenv()
 
 # MongoDB connection setup
-client = MongoClient(os.getenv("MONGO_CLIENT"))  # replace with your MongoDB connection string
+client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
 db = client["auth_app"]  # Create a database called auth_app
 users_collection = db["users"]  # Create a collection called users
 
 # Configure the API key
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 def update_preferences(username, region, dietary_preferences, health_goal, meals_per_day, calorie_intake, allergies, duration, user_question):
