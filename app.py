@@ -3,7 +3,6 @@ import requests
 import os
 from pymongo import MongoClient
 
-load_dotenv()
 # MongoDB connection setup
 client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
 db = client["auth_app"]  # Create a database called auth_app
