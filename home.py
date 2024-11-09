@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 
-load_dotenv()
 
 # if st.session_state.login == False:
 #     st.error("You are not logged in. Please log in to access this page.")
