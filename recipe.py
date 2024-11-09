@@ -3,7 +3,6 @@ import streamlit as st
 import os
 import google.generativeai as genai
 
-load_dotenv()
 
 st.title("Recipe Finder")
 
