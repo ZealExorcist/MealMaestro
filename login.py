@@ -2,7 +2,6 @@ import streamlit as st
 from pymongo import MongoClient
 import bcrypt
 
-load_dotenv()
 
 # MongoDB connection setup
 client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
