@@ -21,9 +21,8 @@ home = st.Page(
 st.sidebar.header("Configuration")
 
 with st.container():
+        st.Title("MealMaestros 🍲")
     st.markdown(""" 
-# MealMaestros
-
 MealMaestros is a personalized meal-planning web application designed to cater to diverse dietary preferences, health goals, and regional tastes. This platform allows users to customize their meal plans according to specific preferences and provides various tools to enhance the meal-planning experience, from calorie tracking to ingredient identification.
                 ## Features
 MealMaestros offers the following key functionalities:
