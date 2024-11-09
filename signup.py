@@ -3,7 +3,6 @@ from pymongo import MongoClient
 import bcrypt
 import os
 
-load_dotenv()
 
 client = MongoClient(st.secrets["MONGO_CLIENT"])  # replace with your MongoDB connection string
 db = client["auth_app"]  # Create a database called auth_app
