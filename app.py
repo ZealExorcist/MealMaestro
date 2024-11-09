@@ -64,15 +64,18 @@ st.sidebar.title("Calorie Counter")
 st.sidebar.write("Enter the food item you want to search for:")
 c = st.sidebar.container()
 query = c.text_input("Enter food item")
-if c.button("Search"):
-    api_url = 'https://api.calorieninjas.com/v1/nutrition?query='
-    response = requests.get(api_url + query, headers={'X-Api-Key': st.secrets["NINJA_API_KEY"]})
-    if response.status_code == requests.codes.ok:
-        output = response.json()
-        st.session_state.calorie += float(output['items'][0]['calories'])
-        c.write(f"Calories in {query} : {output['items'][0]['calories']}")
-    else:
-        c.write("Error:", response.status_code, response.text)
+try: 
+    if c.button("Search"):
+        api_url = 'https://api.calorieninjas.com/v1/nutrition?query='
+        response = requests.get(api_url + query, headers={'X-Api-Key': st.secrets["NINJA_API_KEY"]})
+        if response.status_code == requests.codes.ok:
+            output = response.json()
+            st.session_state.calorie += float(output['items'][0]['calories'])
+            c.write(f"Calories in {query} : {output['items'][0]['calories']}")
+        else:
+            c.write("Error:", response.status_code, response.text)
+except Exception as e:
+    c.write("API isn't aware of the food item you entered. Please try again.")
 
 if c.button("Reset"):
     st.session_state.calorie = 0
